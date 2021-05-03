@@ -20,6 +20,7 @@ $(document).on("click","#vibrar", function(){
 });
 
 function mostraMapa(lat, long){
+
   L.mapquest.key = 'C3X8yIdmWSYHiNGgSSr0P2CxDRwhhSRl';
 
         var map = L.mapquest.map('map', {
@@ -27,10 +28,13 @@ function mostraMapa(lat, long){
           layers: L.mapquest.tileLayer('map'),
           zoom: 16
         });
-
+        L.marker([lat, long], {
+          icon: L.mapquest.icons.marker(),
+          draggable: false
+        }).addTo(map);
         map.addControl(L.mapquest.control());
 }
-
+// https://developer.mapquest.com/documentation/mapquest-js/v1.0/examples/map-with-markers-circles-polygons/
 
 $(document).on("click","#local", function(){
   
